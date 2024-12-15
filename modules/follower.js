@@ -92,13 +92,15 @@ export class Follower {
         const about = this.createWrapper();
         details.appendChild(about);
 
-        if (this.hasOwnProperty('message')) {
+        if (this.chat) {
             details.classList.add('message');
             const chatMessage = document.createElement('p');
             chatMessage.setAttribute('class', 'chat-message');
-            chatMessage.textContent = this.message;
+            chatMessage.textContent = this.chat;
             details.appendChild(chatMessage);
-        } else if (this.hasOwnProperty('pictureUrl')) {
+        } 
+        
+        if (this.pictureUrl) {
             details.classList.add('picture');
             const picture = document.createElement('img');
             picture.src = this.pictureUrl;
