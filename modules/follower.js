@@ -30,7 +30,7 @@ export class Follower {
      */
     createAvatarElement() {
         const avatar = document.createElement('section');
-        avatar.setAttribute('class', 'avatar');
+        avatar.classList.add('avatar');
         const image = document.createElement('img');
         image.src = this.avatar;
         image.alt = this.name;
@@ -48,7 +48,7 @@ export class Follower {
     createFollowerMessage() {
         const message = document.createElement('p');
         
-        message.innerHTML = this.hasOwnProperty('subject')  ? `<strong class='followerName'>${this.name}</strong> ${this.reaction} <span class='subject'>${this.subject}</span>` : `<strong class='followerName'>${this.name}</strong> ${this.reaction}`;
+        message.innerHTML = this.subject  ? `<strong class='follower-name'>${this.name}</strong> ${this.reaction} <span class='subject'>${this.subject}</span> ` : `<strong class='follower-name'>${this.name}</strong> ${this.reaction} `;
 
         return message;
     }
@@ -61,19 +61,20 @@ export class Follower {
      */
     createWrapper() {
         const wrapper = document.createElement('div');
-        wrapper.setAttribute('class', 'wrapper');
+        wrapper.classList.add('class', 'wrapper');
         const message = this.createFollowerMessage();
         wrapper.appendChild(message);
+
+        if (this.status === 'unread') {
+            const notification = document.createElement('span');
+            notification.classList.add('notification');
+            message.appendChild(notification);
+        }
+
         const postTime = document.createElement('p');
         postTime.setAttribute('class', 'post-time');
         postTime.textContent = this.time;
         wrapper.appendChild(postTime);
-
-        if (this.status === 'unread') {
-            const notification = document.createElement('div');
-            notification.setAttribute('class', 'notification');
-            wrapper.appendChild(notification);
-        }
 
         return wrapper;
         
@@ -119,7 +120,11 @@ export class Follower {
      */
     createCard() {
         const card = document.createElement('article');
-        card.setAttribute('class', 'card');
+        card.classList.add('card');
+
+        if (this.status === 'unread') {
+            card.classList.add('unread');
+        }
 
         const avatar = this.createAvatarElement();
         const details = this.createDetailsElement();
