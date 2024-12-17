@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="description" content="Notifications page for Frontend Mentor challenge">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   
@@ -14,14 +15,14 @@
 </head>
 <body>
 
-  <div id="app">
+  <div id="app" role="application" aria-label="Notification Center">
     <main>
       <section class="heading">
         <h1>
           Notifications
-          <span class="num-unread">3</span>
+          <span class="num-unread" aria-label="3 unread notifications">3</span>
         </h1>
-        <button class="mark-btn">Mark all as read</button>
+        <button class="mark-btn" aria-label="Mark all notifications as read">Mark all as read</button>
       </section>
 
       <section class="content">

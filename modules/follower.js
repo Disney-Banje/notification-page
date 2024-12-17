@@ -3,7 +3,7 @@ export class Follower {
     /**
      * Creates a new Follower instance
      * @param {string} name - The name of the follower
-     * @param {string} avatar - URL of the follower's avatar image
+     * @param {string} avatar - URL path of the follower's avatar image
      * @param {string} time - Time of the interaction
      * @param {string} status - Status of the notification ('read' or 'unread')
      * @param {string} reaction - The follower's reaction or action
@@ -44,6 +44,7 @@ export class Follower {
     /**
      * Creates and returns a message element with the follower's interaction
      * @returns {HTMLElement} Paragraph element containing the formatted message
+     * following a condition of whether the instance has the subject property key
      */
     createFollowerMessage() {
         const message = document.createElement('p');
@@ -57,7 +58,9 @@ export class Follower {
     
     /**
      * Creates a wrapper div containing the message and time information
-     * @returns {HTMLElement} Div element containing the message, timestamp, and notification status
+     * @returns {HTMLElement} Div element containing the message, timestamp, and 
+     * a notification status if the object has a property key 'status', with a value
+     *  of 'unread' to add the notification {HTMLElement}
      */
     createWrapper() {
         const wrapper = document.createElement('div');
@@ -85,6 +88,7 @@ export class Follower {
     /**
      * Creates a details section containing the message wrapper and additional content
      * @returns {HTMLElement} Section element containing all message details and optional content
+     * such as the chatMessage element and the picture element
      */
     createDetailsElement() {
         const details = document.createElement('section');
