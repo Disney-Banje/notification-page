@@ -27,8 +27,9 @@ async function loadFollowers() {
             const card = follower.createCard();
             content.appendChild(card);
             // console.log(content);
+        })
 
-            const articles = document.querySelectorAll('article');
+        const articles = document.querySelectorAll('article');
             const notifications = document.querySelectorAll('.notification');
 
             button.addEventListener('click', () => {
@@ -45,7 +46,6 @@ async function loadFollowers() {
                 unreadCount.textContent = 0;
                 
             })
-        })
 
     } catch (error) {
         console.error('Error loading followers:', error);
